@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaikwad Pranavraje Dhananjay | Electronics & Embedded Systems Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0b0f19; color: #e2e8f0; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .bg-grid { background-image: radial-gradient(rgba(14, 165, 233, 0.1) 1px, transparent 0); background-size: 24px 24px; }
+    .glow-cyan { box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.25); }
+    .glow-emerald { box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.25); }
+  </style>
+</head>
+<body class="bg-grid min-h-screen text-slate-200 antialiased selection:bg-cyan-500 selection:text-black">
+
+  <!-- Navigation -->
+  <header class="sticky top-0 z-40 backdrop-blur-md bg-[#0b0f19]/85 border-b border-cyan-900/40 px-6 py-4">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-cyan-600 to-emerald-400 flex items-center justify-center text-black font-extrabold text-xl shadow-lg shadow-cyan-500/20">
+          <i class="fa-solid fa-microchip"></i>
+        </div>
+        <div>
+          <h1 class="text-lg font-bold text-white tracking-tight flex items-center gap-2">
+            Gaikwad Pranavraje <span class="text-xs px-2 py-0.5 rounded bg-cyan-950 text-cyan-400 border border-cyan-800 mono">E&TC Eng.</span>
+          </h1>
+          <p class="text-xs text-slate-400">Embedded Systems & Hardware Portfolio</p>
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-2">
+        <button onclick="openModal()" class="px-4 py-2 bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 font-semibold rounded-lg hover:brightness-110 transition shadow-md flex items-center gap-2 text-sm">
+          <i class="fa-solid fa-plus"></i> Add New Project
+        </button>
+        <button onclick="exportData()" title="Backup Projects as JSON" class="p-2 text-slate-400 hover:text-cyan-400 hover:bg-slate-900 border border-slate-800 rounded-lg transition text-sm">
+          <i class="fa-solid fa-download"></i>
+        </button>
+        <label title="Import Projects JSON" class="p-2 text-slate-400 hover:text-cyan-400 hover:bg-slate-900 border border-slate-800 rounded-lg transition text-sm cursor-pointer mb-0">
+          <i class="fa-solid fa-upload"></i>
+          <input type="file" id="importInput" onchange="importData(event)" class="hidden" accept=".json">
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero & Profile Section -->
+  <main class="max-w-7xl mx-auto px-6 py-10">
+    <section class="bg-gradient-to-b from-slate-900/90 to-slate-900/40 border border-slate-800 rounded-2xl p-6 sm:p-8 backdrop-blur-sm glow-cyan mb-12">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+        <div class="lg:col-span-2 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/70 border border-cyan-800/60 text-cyan-300 text-xs font-mono">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Open for Engineering Projects & Collaborations
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Gaikwad Pranavraje Dhananjay
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Electronics & Telecommunication Engineering student at <strong class="text-white">Savitribai Phule Pune University (SPPU)</strong>. Passionate about embedded firmware, IoT architecture, microcontroller interfacing, cryptography logic, and sensor-driven hardware systems.
+          </p>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-3 py-1 bg-slate-800/80 border border-slate-700/60 rounded text-xs text-slate-300 mono"><i class="fa-solid fa-graduation-cap text-cyan-400 mr-1.5"></i>B.E. E&TC (SPPU)</span>
+            <span class="px-3 py-1 bg-slate-800/80 border border-slate-700/60 rounded text-xs text-slate-300 mono"><i class="fa-solid fa-users text-emerald-400 mr-1.5"></i>EESA & ISF Member</span>
+            <span class="px-3 py-1 bg-slate-800/80 border border-slate-700/60 rounded text-xs text-slate-300 mono"><i class="fa-solid fa-certificate text-purple-400 mr-1.5"></i>IoT & VLSI Intern</span>
+          </div>
+        </div>
+
+        <div class="bg-slate-950/80 border border-slate-800/80 rounded-xl p-5 space-y-3 mono text-xs">
+          <div class="text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800 pb-2 text-[11px] flex justify-between">
+            <span>Hardware & Toolchain Stack</span>
+            <span class="text-cyan-400">Ready</span>
+          </div>
+          <div class="space-y-2">
+            <div>
+              <span class="text-slate-500 block">MCUs & Boards:</span>
+              <span class="text-cyan-300 font-medium">Arduino Uno / Nano, STM32, ESP8266/ESP32</span>
+            </div>
+            <div>
+              <span class="text-slate-500 block">Languages:</span>
+              <span class="text-emerald-300 font-medium">Embedded C, C++, MATLAB, Python</span>
+            </div>
+            <div>
+              <span class="text-slate-500 block">Protocols & Peripherals:</span>
+              <span class="text-slate-300">I2C, SPI, UART, RTC DS1307, MAX30102</span>
+            </div>
+            <div>
+              <span class="text-slate-500 block">IDEs & Simulators:</span>
+              <span class="text-slate-300">STM32CubeIDE, Arduino IDE, Proteus, Keil</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Controls & Counters -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+      <div>
+        <h3 class="text-xl font-bold text-white flex items-center gap-2">
+          Project Repository
+          <span id="projectCount" class="text-xs bg-slate-800 text-cyan-400 border border-slate-700 px-2 py-0.5 rounded-full mono">3</span>
+        </h3>
+        <p class="text-xs text-slate-400 mt-1">Real-time log of prototypes, schematics, and embedded firmware designs.</p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3">
+        <div class="relative">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+          <input type="text" id="searchInput" oninput="renderProjects()" placeholder="Search project, MCU, sensor..." class="pl-9 pr-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500 w-52 md:w-64">
+        </div>
+        <select id="categoryFilter" onchange="renderProjects()" class="bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-300 py-1.5 px-3 focus:outline-none focus:border-cyan-500">
+          <option value="ALL">All Categories</option>
+          <option value="IoT">IoT & Automation</option>
+          <option value="Biomedical">Biomedical & Sensors</option>
+          <option value="Security / Cryptography">Security & Cryptography</option>
+          <option value="VLSI / Hardware">VLSI & Hardware</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Project Grid -->
+    <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Injected via JavaScript -->
+    </div>
+  </main>
+
+  <!-- Add/Edit Project Modal -->
+  <div id="projectModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-xl max-h-[90vh] overflow-y-auto p-6 glow-cyan">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-5">
+        <h4 id="modalTitle" class="text-lg font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-microchip text-cyan-400"></i> Add Project Entry
+        </h4>
+        <button onclick="closeModal()" class="text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <form id="projectForm" onsubmit="saveProject(event)" class="space-y-4 text-xs">
+        <input type="hidden" id="editIndex" value="-1">
+
+        <div>
+          <label class="block text-slate-300 font-semibold mb-1">Project Title *</label>
+          <input type="text" id="formTitle" required placeholder="e.g., IoT Smart Medicine Dispenser" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-slate-100 focus:border-cyan-500 focus:outline-none">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Category *</label>
+            <select id="formCategory" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-slate-100 focus:border-cyan-500 focus:outline-none">
+              <option value="IoT">IoT & Automation</option>
+              <option value="Biomedical">Biomedical & Sensors</option>
+              <option value="Security / Cryptography">Security & Cryptography</option>
+              <option value="VLSI / Hardware">VLSI & Hardware</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Microcontroller / Core IC *</label>
+            <input type="text" id="formMCU" required placeholder="e.g., Arduino Nano / ATmega328P" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-slate-100 focus:border-cyan-500 focus:outline-none mono">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 font-semibold mb-1">Key Components / Sensors (Comma separated)</label>
+          <input type="text" id="formComponents" placeholder="e.g., DS1307 RTC, I2C 16x2 LCD, Buzzer, Push Buttons" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-slate-100 focus:border-cyan-500 focus:outline-none mono">
+        </div>
+
+        <div>
+          <label class="block text-slate-300 font-semibold mb-1">Project Summary & Architecture Description *</label>
+          <textarea id="formDesc" rows="3" required placeholder="Outline circuit design, algorithm, protocols (I2C/SPI), and test results..." class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-slate-100 focus:border-cyan-500 focus:outline-none"></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Code / GitHub Repo URL</label>
+            <input type="url" id="formRepo" placeholder="https://github.com/..." class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-slate-100 focus:border-cyan-500 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Documentation / Schematic Link</label>
+            <input type="url" id="formDocs" placeholder="https://..." class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-slate-100 focus:border-cyan-500 focus:outline-none">
+          </div>
+        </div>
+
+        <div class="pt-4 flex justify-end gap-3 border-t border-slate-800">
+          <button type="button" onclick="closeModal()" class="px-4 py-2 bg-slate-800 text-slate-300 hover:bg-slate-700 rounded-lg transition">Cancel</button>
+          <button type="submit" class="px-5 py-2 bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 font-bold rounded-lg hover:brightness-110 transition">Save Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="mt-16 border-t border-slate-800/80 py-8 px-6 text-center text-xs text-slate-500 mono">
+    <p>© 2026 Gaikwad Pranavraje Dhananjay • Department of E&TC Engineering • Savitribai Phule Pune University</p>
+    <p class="text-[11px] text-slate-600 mt-1">Built with HTML5, Tailwind CSS & LocalStorage • Self-contained & Hostable anywhere</p>
+  </footer>
+
+  <script>
+    // Initial Default Seed Projects
+    const defaultProjects = [
+      {
+        title: "IoT Smart Medicine Reminder & Dispenser",
+        category: "IoT",
+        mcu: "Arduino Nano (ATmega328P)",
+        components: ["DS1307 RTC Module", "I2C 16x2 LCD Display", "Active Piezo Buzzer", "Push Buttons"],
+        desc: "Automated schedule tracking system for timed prescription management. Interfaced RTC DS1307 via I2C protocol to maintain exact calendar time and configured multi-slot auditory and visual alerts with snooze and confirmation push buttons.",
+        repo: "https://github.com/",
+        docs: ""
+      },
+      {
+        title: "Photoplethysmography (PPG) Heart Rate & SpO2 Monitor",
+        category: "Biomedical",
+        mcu: "Arduino Uno / Nano",
+        components: ["MAX30102 Optical Sensor", "0.96 OLED (SSD1306)", "Analog Low-Pass Filter"],
+        desc: "Designed non-invasive optical pulse oximetry system measuring peripheral blood oxygen saturation and heart rate. Implemented digital signal filtering and peak detection in embedded C to isolate cardiac pulse cycles from ambient noise.",
+        repo: "https://github.com/",
+        docs: ""
+      },
+      {
+        title: "Data Encryption Standard (DES) Cryptographic Engine",
+        category: "Security / Cryptography",
+        mcu: "C/C++ Bare-Metal / Firmware",
+        components: ["S-Boxes Table Array", "Bitwise Permutation Logic", "Key Expansion Routine"],
+        desc: "Engineered and benchmarked a 16-round Feistel network DES block cipher in C++. Optimized memory footprint, bit-shifting routines, and subkey expansion for resource-constrained microcontrollers.",
+        repo: "https://github.com/",
+        docs: ""
+      }
+    ];
+
+    // Initialize LocalStorage
+    let projects = JSON.parse(localStorage.getItem('pranav_projects_data')) || defaultProjects;
+
+    function saveToStorage() {
+      localStorage.setItem('pranav_projects_data', JSON.stringify(projects));
+    }
+
+    function renderProjects() {
+      const grid = document.getElementById('projectsGrid');
+      const search = document.getElementById('searchInput').value.toLowerCase();
+      const cat = document.getElementById('categoryFilter').value;
+
+      const filtered = projects.filter(p => {
+        const matchesCat = (cat === 'ALL' || p.category === cat);
+        const compStr = Array.isArray(p.components) ? p.components.join(' ') : p.components;
+        const matchesSearch = p.title.toLowerCase().includes(search) ||
+                              p.mcu.toLowerCase().includes(search) ||
+                              p.desc.toLowerCase().includes(search) ||
+                              compStr.toLowerCase().includes(search);
+        return matchesCat && matchesSearch;
+      });
+
+      document.getElementById('projectCount').innerText = filtered.length;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-16 text-center text-slate-500 border border-dashed border-slate-800 rounded-2xl">
+            <i class="fa-solid fa-folder-open text-3xl mb-3 text-slate-600"></i>
+            <p class="text-sm">No matching projects found.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map((proj, idx) => {
+        // Find true index in master array
+        const masterIndex = projects.indexOf(proj);
+        const compList = Array.isArray(proj.components) ? proj.components : proj.components.split(',').map(s => s.trim());
+
+        return `
+          <div class="bg-slate-900/90 border border-slate-800 hover:border-cyan-500/50 rounded-xl p-5 flex flex-col justify-between transition-all duration-200 group hover:-translate-y-1">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-0.5 rounded text-[11px] font-semibold bg-cyan-950/80 text-cyan-300 border border-cyan-800/60 mono">
+                  ${proj.category}
+                </span>
+                <div class="flex items-center gap-1 opacity-60 group-hover:opacity-100 transition">
+                  <button onclick="editProject(${masterIndex})" title="Edit" class="text-slate-400 hover:text-cyan-400 p-1 text-xs">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button onclick="deleteProject(${masterIndex})" title="Delete" class="text-slate-400 hover:text-red-400 p-1 text-xs">
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
+                </div>
+              </div>
+
+              <h4 class="text-base font-bold text-white group-hover:text-cyan-300 transition tracking-tight">
+                ${proj.title}
+              </h4>
+
+              <div class="mt-2.5 mb-3 flex items-center gap-2 mono text-xs text-emerald-400 bg-slate-950/70 px-2.5 py-1.5 rounded border border-slate-800">
+                <i class="fa-solid fa-microchip text-[11px]"></i>
+                <span class="truncate">${proj.mcu}</span>
+              </div>
+
+              <p class="text-xs text-slate-400 leading-relaxed line-clamp-3 mb-4">
+                ${proj.desc}
+              </p>
+
+              <!-- Components Tags -->
+              <div class="flex flex-wrap gap-1 mb-4">
+                ${compList.filter(c => c).map(c => `
+                  <span class="text-[10px] mono bg-slate-800 text-slate-300 px-2 py-0.5 rounded border border-slate-700/50">
+                    ${c}
+                  </span>
+                `).join('')}
+              </div>
+            </div>
+
+            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+              <span class="text-slate-500 mono text-[11px]">Hardware Validated</span>
+              <div class="flex gap-3">
+                ${proj.repo ? `<a href="${proj.repo}" target="_blank" class="text-slate-400 hover:text-cyan-300 transition flex items-center gap-1"><i class="fa-brands fa-github"></i> Code</a>` : ''}
+                ${proj.docs ? `<a href="${proj.docs}" target="_blank" class="text-slate-400 hover:text-cyan-300 transition flex items-center gap-1"><i class="fa-solid fa-book"></i> Docs</a>` : ''}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function openModal(isEdit = false) {
+      document.getElementById('projectModal').classList.remove('hidden');
+      if (!isEdit) {
+        document.getElementById('modalTitle').innerHTML = '<i class="fa-solid fa-microchip text-cyan-400"></i> Add Project Entry';
+        document.getElementById('projectForm').reset();
+        document.getElementById('editIndex').value = '-1';
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('projectModal').classList.add('hidden');
+    }
+
+    function editProject(index) {
+      const p = projects[index];
+      document.getElementById('modalTitle').innerHTML = '<i class="fa-solid fa-pen-to-square text-cyan-400"></i> Edit Project Entry';
+      document.getElementById('editIndex').value = index;
+      document.getElementById('formTitle').value = p.title;
+      document.getElementById('formCategory').value = p.category;
+      document.getElementById('formMCU').value = p.mcu;
+      document.getElementById('formComponents').value = Array.isArray(p.components) ? p.components.join(', ') : p.components;
+      document.getElementById('formDesc').value = p.desc;
+      document.getElementById('formRepo').value = p.repo || '';
+      document.getElementById('formDocs').value = p.docs || '';
+      openModal(true);
+    }
+
+    function deleteProject(index) {
+      if (confirm(`Are you sure you want to delete "${projects[index].title}"?`)) {
+        projects.splice(index, 1);
+        saveToStorage();
+        renderProjects();
+      }
+    }
+
+    function saveProject(e) {
+      e.preventDefault();
+      const editIndex = parseInt(document.getElementById('editIndex').value);
+      const componentsRaw = document.getElementById('formComponents').value;
+      const compArray = componentsRaw ? componentsRaw.split(',').map(s => s.trim()).filter(Boolean) : [];
+
+      const newProj = {
+        title: document.getElementById('formTitle').value.trim(),
+        category: document.getElementById('formCategory').value,
+        mcu: document.getElementById('formMCU').value.trim(),
+        components: compArray,
+        desc: document.getElementById('formDesc').value.trim(),
+        repo: document.getElementById('formRepo').value.trim(),
+        docs: document.getElementById('formDocs').value.trim()
+      };
+
+      if (editIndex >= 0) {
+        projects[editIndex] = newProj;
+      } else {
+        projects.unshift(newProj);
+      }
+
+      saveToStorage();
+      renderProjects();
+      closeModal();
+    }
+
+    function exportData() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(projects, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", "pranav_electronics_projects.json");
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    }
+
+    function importData(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (Array.isArray(imported)) {
+            projects = imported;
+            saveToStorage();
+            renderProjects();
+            alert("Projects imported successfully!");
+          } else {
+            alert("Invalid JSON format.");
+          }
+        } catch (err) {
+          alert("Error parsing JSON file.");
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    // Initial render
+    renderProjects();
+  </script>
+</body>
+</html>
